@@ -6,7 +6,7 @@ Overview: This project would be an experimental use of a local AI-based agent de
 
 Tools & Technologies
 
-Local LLM: Ollama / llama.cpp (Mistral, Llama 3, etc.)
+Local LLM: Ollama / llama.cpp
 RAG: LangChain / LlamaIndex + ChromaDB / FAISS
 CTI Platforms: MISP, Shodan, VirusTotal, Maltego
 SIEM: Splunk / ELK Stack
@@ -15,3 +15,9 @@ Adversary Emulation: MITRE CALDERA, Atomic Red Team
 Frameworks: MITRE ATT&CK, Cyber Kill Chain, MITRE CAR
 Languages: Python 3.10+, Bash
 Containerization: Docker, Docker Compose
+
+Why Local LLM + RAG?
+Privacy: pentest results, logs, and IOCs never leave the local environment.
+Cost: no API fees; runs on a laptop or lab server.
+Accuracy: RAG grounds the LLM in up-to-date knowledge bases — MITRE ATT&CK, SigmaHQ, CVE, Atomic Red Team — preventing hallucinations.
+Extensibility: new threat intel can be added to the vector DB without retraining the model.
