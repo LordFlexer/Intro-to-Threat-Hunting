@@ -13,7 +13,7 @@ Cyberterrorism
 Insider threats
 
 By Actor
-APT (Advanced Persistent Threat) — e.g., APT29, APT41
+APT (Advanced Persistent Threat)
 Cybercriminals — e.g., LockBit, REvil
 Hacktivists — e.g., Anonymous
 Insiders — employees, contractors
@@ -41,7 +41,7 @@ The AI agent analyzes penetration testing results that emulate specific threat a
 
 Example: If the threat is classified as APT29 (espionage, supply chain), the agent focuses on techniques such as T1059.001 (PowerShell), T1003 (Credential Dumping), and T1071 (Application Layer Protocol).
 
-5. MITRE ATT&CK Mapping (Example)
+5. MITRE ATT&CK Mapping
 
 Threat Type: APT
 Example Actor: APT29
