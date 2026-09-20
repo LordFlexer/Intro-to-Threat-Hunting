@@ -14,8 +14,8 @@ Insider threats
 
 By Actor
 APT (Advanced Persistent Threat)
-Cybercriminals — e.g., LockBit, REvil
-Hacktivists — e.g., Anonymous
+Cybercriminals 
+Hacktivists 
 Insiders — employees, contractors
 Script kiddies
 
