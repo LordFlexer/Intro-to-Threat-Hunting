@@ -100,4 +100,3 @@ Nessus: A proprietary vulnerability scanner used to identify vulnerabilities, mi
 Burp Suite: A web application security testing tool used for scanning and exploiting web vulnerabilities. Source: PortSwigger.
 
 CloudTrail: An AWS service that logs API calls made in an AWS account, used for auditing and threat hunting in cloud environments. Source: AWS.
-DeepSeek (2026) was used as a generative AI tool to assist
