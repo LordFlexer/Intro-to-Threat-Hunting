@@ -21,3 +21,9 @@ Privacy: pentest results, logs, and IOCs never leave the local environment.
 Cost: no API fees; runs on a laptop or lab server.
 Accuracy: RAG grounds the LLM in up-to-date knowledge bases — MITRE ATT&CK, SigmaHQ, CVE, Atomic Red Team — preventing hallucinations.
 Extensibility: new threat intel can be added to the vector DB without retraining the model.
+
+During the preparation of this assignment, the author used DeepSeek (https://chat.deepseek.com) as a generative AI assistant throughout the entire workflow — including brainstorming, code examples, documentation, and text editing. All AI-generated content was reviewed, verified, and adapted by the author, who takes full responsibility for the final work.
+
+This assignment represents a small independent research effort: the dataset was analyzed locally, machine learning metrics were computed, MITRE ATT&CK mapping was performed, and a Sigma detection rule was generated as a proof of concept for the Local AI-Based Threat Hunting Agent project.
+
+Reference: DeepSeek. (2026). DeepSeek [Large language model]. Retrieved from https://chat.deepseek.com
