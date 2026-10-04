@@ -1,0 +1,16 @@
+Problem Statement
+The Internet of Things (IoT) has grown from a niche technology into the infrastructure backbone of smart homes, industry, healthcare, and urban services. As the number of connected devices has grown, so has the attack surface: IoT nodes are rarely updated, often run on weak hardware, lack built-in security, and are permanently connected to the network. This makes them a favorite target for DDoS botnets (Mirai and its variants), man-in-the-middle attacks, scanning, and spoofing. According to CIC-IoT-2023, the share of malicious traffic in real IoT networks can reach 86% — meaning that in such environments an attack is not an exception but rather the norm.
+
+Classic signature-based intrusion detection systems (IDS) perform poorly in this setting. Signature rules are updated with delay, do not cover new or modified attacks, and require manual work from an analyst for every new threat. This makes the shift toward models that learn from network traffic and find patterns on their own — that is, machine learning (ML) and deep learning (DL) — increasingly relevant.
+
+However, several interconnected problems arise here, and they define the content of this work.
+
+First, it is unclear which class of methods — classic ML or DL — is optimal for attack detection in IoT. It is widely assumed that DL is always better, but in practice, tabular network features and strong class imbalance work against neural networks. Testing this assumption requires a direct comparative experiment, not theoretical reasoning.
+
+Second, IoT traffic is strongly imbalanced across classes: attacks greatly outnumber normal traffic. This breaks unsupervised learning, in particular autoencoders, which are supposed to learn on "normal" data and then notice deviations from it. With a small share of benign records, the autoencoder does not see enough variety of normal behavior and loses the ability to distinguish it from an attack. How to fix this — and whether an AE is even appropriate in such a setup — remains an open question.
+
+Third, even if individual models show high metrics, it is unclear whether combining them into an ensemble makes sense. Intuitively, a combination of models should outperform each one alone, but if one model dominates while the others are weaker, averaging can worsen the result. Testing this hypothesis matters both theoretically and practically.
+
+Finally, ML/DL model results are rarely brought to artifacts usable in a real SOC. An analyst receives a prediction of "attack / no attack" but does not know which MITRE ATT&CK technique it corresponds to or how to turn that knowledge into a detection rule for a SIEM. The gap between research and practice remains wide.
+
+The problem, therefore, reduces to the following: under conditions of strong class imbalance and the tabular nature of IoT traffic, it is necessary to determine which approach — ML, DL, or a combination — is truly effective for attack detection, to understand the limits of each method, and to bring the result to practical artifacts (MITRE ATT&CK mapping and a SIEM detection rule). The work answers these questions through a direct comparative experiment on the CIC-IoT-2023 dataset and analysis of the results.
