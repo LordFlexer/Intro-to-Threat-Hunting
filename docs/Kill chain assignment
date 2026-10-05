@@ -1,0 +1,55 @@
+Cyber Kill Chain - a conceptual model developed by Lockheed Martin Corporation that describes the standard sequence of steps an attacker takes when carrying out a targeted attack.
+
+[1] Reconnaissance
+        ↓
+[2] Weaponization
+        ↓
+[3] Delivery
+        ↓
+[4] Exploitation
+        ↓
+[5] Installation
+        ↓
+[6] Command & Control
+        ↓
+[7] Actions on Objectives
+
+Mine CICIoT2023 dataset contains only network flows, not endpoint or email logs. Therefore, not all 7 stages are visible.
+
+Reconnaissance: You have already found Recon-PortScan, VulnerabilityScan, and Recon-HostDiscovery (370 + 273 + 331 records).
+
+Exploitation: You have found Uploading_Attack, SQL_injection, CommandInjection, and XSS (totaling ~116 records).
+
+Actions on Objectives: You have found DDoS-* (2819 records), Mirai-*, MITM-ArpSpoofing, DNS_Spoofing, and BrowserHijacking.
+
+Reconnaissance (974) — this category includes Recon-PortScan, VulnerabilityScan, and Recon-HostDiscovery. This makes sense: scanning and reconnaissance leave a distinct footprint on the network.
+
+Exploitation (76) — this category includes Uploading_Attack, SQL_injection, CommandInjection, and XSS. There are fewer entries here because these attacks are more "targeted."
+
+Actions on Objectives (3533) — the largest group: DDoS-, Mirai-, MITM, DNS_Spoofing, and BrowserHijacking. This makes sense: DDoS flooding generates thousands of traffic streams.
+
+
+Recon-PortScan — port scanning. The attacker probes ports to identify open services.
+
+VulnerabilityScan — vulnerability scanning. Checks devices for known security flaws.
+
+Recon-HostDiscovery — host discovery. Identifies which devices are present on the network.
+
+Uploading_Attack — an attempt to upload a malicious file to a device.
+
+SQL_injection — the injection of SQL code into a query to steal or modify data.
+
+CommandInjection — the injection of an OS command to execute it on a device.
+
+XSS — the injection of a JavaScript script into a page to attack the user's browser.
+
+DDoS-ACK_Fragmentation, DDoS-UDP_Fragmentation, DDoS-SYN_Flood, DDoS-TCP_Flood, DDoS-HTTP_Flood, DDoS-PSHACK_Fragmentation, DDoS-ICMP_Flood, and DDoS-SlowLoris are various types of DDoS flood attacks. They all share a single goal: to overwhelm the target and take it offline.
+
+Mirai-greeth_flood and Mirai-udpplain are attacks launched by the Mirai botnet, which infects IoT devices to orchestrate massive DDoS attacks.
+
+MITM-ArpSpoofing involves manipulating ARP tables to position an attacker between two devices and intercept traffic.
+
+DNS_Spoofing involves tampering with DNS responses to redirect a victim to a fraudulent website.
+
+BrowserHijacking involves hijacking a browser session to act on the user's behalf.
+
