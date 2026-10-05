@@ -6,7 +6,7 @@ Glossary
  Unsupervised learning — learning without labels, where the model finds structure on its own.
  Random Forest — an ensemble of decision trees that vote together.
  MLP (Multi-Layer Perceptron) — a basic feedforward neural network of fully-connected layers.
- Autoencoder (AE) — a network that compresses input and reconstructs it; high reconstruction error means anomaly.
+ Autoencoder (AE) — a network that compresses input and reconstructs it; high reconstruction error means anomaly
  Encoder — the part of the AE that compresses the input into a small representation.
  Decoder — the part of the AE that reconstructs data from the compressed representation.
  Layer — one stage of processing inside a neural network.
