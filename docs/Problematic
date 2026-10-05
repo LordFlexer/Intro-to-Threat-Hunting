@@ -14,3 +14,5 @@ Third, even if individual models show high metrics, it is unclear whether combin
 Finally, ML/DL model results are rarely brought to artifacts usable in a real SOC. An analyst receives a prediction of "attack / no attack" but does not know which MITRE ATT&CK technique it corresponds to or how to turn that knowledge into a detection rule for a SIEM. The gap between research and practice remains wide.
 
 The problem, therefore, reduces to the following: under conditions of strong class imbalance and the tabular nature of IoT traffic, it is necessary to determine which approach — ML, DL, or a combination — is truly effective for attack detection, to understand the limits of each method, and to bring the result to practical artifacts (MITRE ATT&CK mapping and a SIEM detection rule). The work answers these questions through a direct comparative experiment on the CIC-IoT-2023 dataset and analysis of the results.
+
+During this work, the author used the DeepSeek-V4 AI assistant (released April 2026, DeepSeek AI) for code review, result interpretation, and documentation drafting.
