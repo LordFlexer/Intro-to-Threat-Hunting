@@ -132,3 +132,10 @@ Glossary
 - Probability — the model's confidence, such as the probability of an attack.
 - Ground truth — the correct answers in the dataset.
 - CIC-IoT-2023 — the dataset name, the Canadian Institute for Cybersecurity IoT dataset from 2023.
+- Recon-PortScan — port scanning. The attacker probes ports to identify open services.
+- VulnerabilityScan — vulnerability scanning. Checks devices for known security flaws.
+- Recon-HostDiscovery — host discovery. Identifies which devices are present on the network.
+- Uploading_Attack — an attempt to upload a malicious file to a device.
+- SQL_injection — the injection of SQL code into a query to steal or modify data.
+- CommandInjection — the injection of an OS command to execute it on a device.
+- XSS — the injection of a JavaScript script into a page to attack the user's browser.
