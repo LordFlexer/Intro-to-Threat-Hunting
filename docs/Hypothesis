@@ -1,1 +1,11 @@
-"My hypothesis is that a DDoS attack on an IoT device differs from normal traffic due to small packet sizes and low transmission intensity. This is counterintuitive, as classic DDoS attacks are associated with 'noise' and high speeds. However, the reality of IoT traffic is the opposite: normal traffic consists of large firmware updates and data streams, whereas a DDoS attack involves a multitude of small, frequent requests—insignificant in terms of volume but capable of overloading the device through sheer quantity. After testing this hypothesis in Splunk using 10,000 records, I achieved a precision of 94.33%—meaning that 94 out of every 100 detected events were indeed DDoS attacks.".
+Formulation
+If an attacker launches a DDoS attack against an IoT device, anomalous patterns will appear in the network traffic: an abnormally low packet transmission rate and abnormally small header sizes.
+
+Expected result: If the hypothesis is correct, the majority of records meeting these two conditions will correspond to a DDoS attack rather than normal traffic.
+
+Hypothesis Rationale
+Why do we make this assumption? There are three reasons.
+
+1. The nature of DDoS attacks on IoT. IoT devices (cameras, sensors, smart plugs) have limited computing resources. DDoS attacks against them typically rely not on "heavy" streaming transmissions, but on a multitude of small, frequent requests—such as SYN floods, UDP fragmentation, or ICMP floods. Each individual packet is small, but there are many of them. This distinguishes DDoS from normal traffic, where the device transmits large blocks of data (e.g., video, firmware updates).
+
+2. Logic inverse to classic DDoS. In standard literature, DDoS is associated with a "deluge" of traffic—high rates and large volumes. However, the picture is reversed in the IoT context: normal traffic consists of infrequent, large transmissions (the device wakes up, sends data, and goes back to sleep), whereas DDoS involves frequent, small requests. Therefore, we invert the classic indicators: we look for a low Rate and small Header_Length, rather than high values.
