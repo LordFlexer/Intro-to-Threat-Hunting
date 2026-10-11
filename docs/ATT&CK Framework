@@ -1,0 +1,36 @@
+Network Denial of Service (T1498)
+Sub-techniques:  T1498.001, T1498.002
+Tactic: Impact (The adversary is trying to manipulate, interrupt, or destroy your systems and data).
+Platforms: Containers, IaaS, Linux, Windows, macOS
+Impact Type: Availability
+
+Mitigations: M1037 (Filter Network Traffic) - When flood volumes exceed the capacity of the network connection being targeted, it is typically necessary to intercept the incoming traffic upstream to filter out the attack traffic from the legitimate traffic. Such defenses can be provided by the hosting Internet Service Provider (ISP) or by a 3rd party such as a Content Delivery Network (CDN) or providers specializing in DoS mitigations.
+
+Depending on flood volume, on-premises filtering may be possible by blocking source addresses sourcing the attack, blocking ports that are being targeted, or blocking protocols being used for transport.
+
+As immediate response may require rapid engagement of 3rd parties, analyze the risk associated to critical resources being affected by Network DoS attacks and create a disaster recovery plan/business continuity plan to respond to incidents.
+
+Detection Strategy: DET0158 (Behavioral Detection of T1498 – Network Denial of Service Across Platforms):
+AN1434 - Executable or script generating large outbound network traffic targeting remote hosts or known amplification ports
+AN1435 - Flooding tools like hping3 or nping sending large volumes of packets across multiple ports or IPs
+
+Sub-techniques (T1498.001, T1498.002)
+T1498.001 (Network Denial of Service: Direct Network Flood) - Adversaries may attempt to cause a denial of service (DoS) by directly sending a high-volume of network traffic to a target. This DoS attack may also reduce the availability and functionality of the targeted system(s) and network. Direct Network Floods are when one or more systems are used to send a high-volume of network packets towards the targeted service's network. Almost any network protocol may be used for flooding. Stateless protocols such as UDP or ICMP are commonly used but stateful protocols such as TCP can be used as well.
+
+Botnets are commonly used to conduct network flooding attacks against networks and services. Large botnets can generate a significant amount of traffic from systems spread across the global Internet. Adversaries may have the resources to build out and control their own botnet infrastructure or may rent time on an existing botnet to conduct an attack. In some of the worst cases for distributed DoS (DDoS), so many systems are used to generate the flood that each one only needs to send out a small amount of traffic to produce enough volume to saturate the target network. In such circumstances, distinguishing DDoS traffic from legitimate clients becomes exceedingly difficult. Botnets have been used in some of the most high-profile DDoS flooding attacks, such as the 2012 series of incidents that targeted major US banks.
+
+Detection Strategy: DET0343 (Direct Network Flood Detection across IaaS, Linux, Windows, and macOS):
+AN0969 - High-volume packet generation by local processes (e.g., PowerShell, cmd, curl.exe) or network service processes resulting in excessive outbound traffic over short time window, correlated with abnormal resource usage or degraded host responsiveness.
+AN0970 - Kernel or userland processes generating high-rate network traffic (ICMP, UDP, TCP SYN) beyond expected interface throughput or user behavior norms.
+AN0971 - Excessive outbound traffic via ping, curl, or custom scripts indicating flooding behavior, especially with no UI context or user interaction
+AN0972 - VM or cloud instance generating anomalously high network egress targeting same destination IP or service, especially using stateless protocols.
+
+T1498.002 (Network Denial of Service: Reflection Amplification) - Adversaries may attempt to cause a denial of service (DoS) by reflecting a high-volume of network traffic to a target. This type of Network DoS takes advantage of a third-party server intermediary that hosts and will respond to a given spoofed source IP address. This third-party server is commonly termed a reflector. An adversary accomplishes a reflection attack by sending packets to reflectors with the spoofed address of the victim. Similar to Direct Network Floods, more than one system may be used to conduct the attack, or a botnet may be used. Likewise, one or more reflectors may be used to focus traffic on the target. This Network DoS attack may also reduce the availability and functionality of the targeted system(s) and network.
+
+Reflection attacks often take advantage of protocols with larger responses than requests in order to amplify their traffic, commonly known as a Reflection Amplification attack. Adversaries may be able to generate an increase in volume of attack traffic that is several orders of magnitude greater than the requests sent to the amplifiers. The extent of this increase will depending upon many variables, such as the protocol in question, the technique used, and the amplifying servers that actually produce the amplification in attack volume. Two prominent protocols that have enabled Reflection Amplification Floods are DNS and NTP, though the use of several others in the wild have been documented. In particular, the memcache protocol showed itself to be a powerful protocol, with amplification sizes up to 51,200 times the requesting packet.
+
+Detection Strategy: DET0408 (Detection Strategy for Reflection Amplification DoS (T1498.002))
+AN1140 - Outbound spoofed traffic to known amplification protocols (e.g., DNS, NTP, Memcached) combined with abnormal network traffic volume targeting remote reflectors, resulting in disproportionate traffic returned to a victim
+AN1141 - Spoofed outbound packets sent to amplification services from command-line tools or scripts, combined with abnormal outbound packet volume on known reflector ports
+AN1142 - Command-line initiated UDP traffic bursts to external reflection amplification ports using built-in scripting or binaries with network anomalies
+AN1143 - Cloud-hosted VM or container generates spoofed UDP requests to third-party services on known amplifier ports, with high outbound-to-inbound traffic ratios in VPC Flow Logs
