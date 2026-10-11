@@ -34,3 +34,12 @@ AN1140 - Outbound spoofed traffic to known amplification protocols (e.g., DNS, N
 AN1141 - Spoofed outbound packets sent to amplification services from command-line tools or scripts, combined with abnormal outbound packet volume on known reflector ports
 AN1142 - Command-line initiated UDP traffic bursts to external reflection amplification ports using built-in scripting or binaries with network anomalies
 AN1143 - Cloud-hosted VM or container generates spoofed UDP requests to third-party services on known amplifier ports, with high outbound-to-inbound traffic ratios in VPC Flow Logs
+
+Mapping Results to ATT&CK
+| Observed Activity | Technique ID | Technique Name | Tactic |
+| SYN flood to port 80 | T1498.001 | Direct Network Flood | Impact |
+| 75,573 packets in 30 sec from one IP | T1498 | Network Denial of Service | Impact |
+| Small packet size (62.9 bytes) | T1498.001 | Direct Network Flood | Impact |
+| Port scan before attack (from dataset) | T1046 | Network Service Discovery | Discovery |
+| ARP spoofing (from dataset) | T1557 | Adversary-in-the-Middle | Credential Access |
+| Vulnerability scanning (from dataset) | T1595 | Active Scanning | Reconnaissance |
