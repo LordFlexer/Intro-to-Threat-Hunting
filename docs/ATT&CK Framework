@@ -36,7 +36,6 @@ AN1142 - Command-line initiated UDP traffic bursts to external reflection amplif
 AN1143 - Cloud-hosted VM or container generates spoofed UDP requests to third-party services on known amplifier ports, with high outbound-to-inbound traffic ratios in VPC Flow Logs
 
 Mapping Results to ATT&CK
-| Observed Activity | Technique ID | Technique Name | Tactic |
 | SYN flood to port 80 | T1498.001 | Direct Network Flood | Impact |
 | 75,573 packets in 30 sec from one IP | T1498 | Network Denial of Service | Impact |
 | Small packet size (62.9 bytes) | T1498.001 | Direct Network Flood | Impact |
