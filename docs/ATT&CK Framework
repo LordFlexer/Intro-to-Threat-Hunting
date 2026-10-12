@@ -42,3 +42,36 @@ Mapping Results to ATT&CK
 | Port scan before attack (from dataset) | T1046 | Network Service Discovery | Discovery |
 | ARP spoofing (from dataset) | T1557 | Adversary-in-the-Middle | Credential Access |
 | Vulnerability scanning (from dataset) | T1595 | Active Scanning | Reconnaissance |
+
+
+CAR-2021-01-001: Identifying Port Scanning Activity
+Port scanning in one of the firsts steps in Denial Network of Service attacks, it serves as reconnaissance to collect data about opened ports, where an attack could appear.
+
+Information Domain: Network
+Data Subtypes: Flow
+Analytic Type: Situational Awareness
+Applicable Platforms: Windows, Linux
+Contributors: Cyware Labs
+
+Splunk search - Identifying Internal hosts and services for lateral movement (Splunk, Sysmon native)
+It should be noted that when a host/ port/ service scan is performed from a compromised machine, a single machine makes multiple calls to other hosts in the network to identify live hosts and services. This can be detected using the following query
+
+Default SIEM reqest from MITRE: sourcetype='firewall_logs' dest_ip = 'internal_subnet' | stats dc(dest_port) as pcount by src_ip | where pcount >5
+
+Modified request: 
+## CAR-2021-01-001: Final Results
+
+### Iterative Improvement
+
+| Iteration | Method | Precision | Recall | F1 |
+| **v3** | **Data-driven (median analysis)** | **48.11%** | **33.04%** | **39.17%** |
+
+### Final Filter (v3)
+
+```python
+suspicious = df[
+    (df["Header_Length"] < 200000) &
+    (df["flow_duration"] > 5) &
+    (df["Header_Length"] > 500) &
+    (df["Rate"] > 5) & (df["Rate"] < 50)
+]
