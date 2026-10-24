@@ -57,21 +57,3 @@ Splunk search - Identifying Internal hosts and services for lateral movement (Sp
 It should be noted that when a host/ port/ service scan is performed from a compromised machine, a single machine makes multiple calls to other hosts in the network to identify live hosts and services. This can be detected using the following query
 
 Default SIEM reqest from MITRE: sourcetype='firewall_logs' dest_ip = 'internal_subnet' | stats dc(dest_port) as pcount by src_ip | where pcount >5
-
-Modified request: 
-## CAR-2021-01-001: Final Results
-
-### Iterative Improvement
-
-| Iteration | Method | Precision | Recall | F1 |
-| **v3** | **Data-driven (median analysis)** | **48.11%** | **33.04%** | **39.17%** |
-
-### Final Filter (v3)
-
-python
-suspicious = df[
-    (df["Header_Length"] < 200000) &
-    (df["flow_duration"] > 5) &
-    (df["Header_Length"] > 500) &
-    (df["Rate"] > 5) & (df["Rate"] < 50)
-]
