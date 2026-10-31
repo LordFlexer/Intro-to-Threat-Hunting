@@ -2,6 +2,8 @@ Topic: DDoS Attacks in the IoT
 Emulated Threat: Mirai Botnet
 Plan Objective: To describe the steps an adversary takes to compromise an IoT device, establish persistence, and prepare for a DDoS attack.
 
+Mirai infects IoT devices and uses them as zombies to create a DDoS traffic
+
 1. Initial Access
 Phase Description: The adversary scans the internet for vulnerable IoT devices (IP cameras, routers, smart speakers) with open ports (Telnet, SSH). Upon discovering a target, the attacker attempts to gain access using default credentials or known vulnerabilities.
 
