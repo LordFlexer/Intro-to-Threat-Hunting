@@ -1,1 +1,50 @@
+Topic: DDoS Attacks in the IoT
+Emulated Threat: Mirai Botnet
+Plan Objective: To describe the steps an adversary takes to compromise an IoT device, establish persistence, and prepare for a DDoS attack.
 
+1. Initial Access
+Phase Description: The adversary scans the internet for vulnerable IoT devices (IP cameras, routers, smart speakers) with open ports (Telnet, SSH). Upon discovering a target, the attacker attempts to gain access using default credentials or known vulnerabilities.
+
+Adversary Actions:
+Scanning the network for open ports (e.g., 23/Telnet, 22/SSH).
+Brute-forcing credentials using a dictionary of common default usernames and passwords (e.g., admin/admin, root/12345).
+ATT&CK Techniques:
+
+T1046 (Network Service Discovery) — scanning the network. (lookin for open devcies to attack)
+
+T1110.001 (Brute Force: Password Guessing) — guessing passwords. (using the most default passwd (12345,qwerty etc.))
+
+T1078.001 (Valid Accounts: Default Accounts) — using default credentials. (smbd could leave the default passwords to hardware from factory)
+
+
+2. Persistence
+Phase Description: After gaining access via Telnet/SSH, the adversary downloads a malicious binary onto the device. To ensure the device does not lose the infection after a reboot, the attacker configures it to execute automatically on startup.
+
+Adversary Actions:
+
+Downloading the malicious script/binary via wget or tftp. (cameras operatin on light LINUX )
+Masquerading the malicious file as a legitimate system process (e.g., renaming it to httpd, sshd, or crond).
+Adding an entry to the system's initialization scripts (e.g., /etc/rc.local or /etc/init.d/) to ensure it starts automatically when the device is powered on. (it adds command that will run the script at the end of an Run-Control scripts e.g /etc/rc.local. Everything in that script system will run with root)
+ATT&CK Techniques:
+
+T1036 (Masquerading) — disguising the malicious files.
+
+T1543.002 (Create or Modify System Process: Systemd Service) or T1037.004 (Boot or Logon Initialization Scripts: RC Scripts) — configuring auto-start.
+
+
+3. Data Exfiltration
+In the context of IoT botnets, "Data" often means "collecting information about the device/network" to expand the botnet, or sending a confirmation of successful infection to the Command and Control (C2) server.
+Phase Description: The malware collects local information (e.g., firmware version, MAC address, credentials) and sends it to the attacker's server (C2). This is done so the attacker knows the device is ready to receive DDoS commands.
+
+Adversary Actions:
+
+Collecting system data (reading files like /etc/passwd, /proc/cpuinfo).
+Establishing a connection with a remote C2 server.
+Transmitting the stolen data and the "successfully infected" report to the attacker's server (often using encrypted traffic or non-standard protocols to bypass firewalls).
+ATT&CK Techniques:
+
+T1005 (Data from Local System) — collecting data from the local system.
+
+T1041 (Exfiltration Over C2 Channel) — transmitting data over the C2 channel.
+
+T1573 (Encrypted Channel) — using encryption for covert data transmission (frequently seen in Mirai-like botnets).
