@@ -8,7 +8,7 @@ Mirai infects IoT devices and uses them as zombies to create a DDoS traffic
 Phase Description: The adversary scans the internet for vulnerable IoT devices (IP cameras, routers, smart speakers) with open ports (Telnet, SSH). Upon discovering a target, the attacker attempts to gain access using default credentials or known vulnerabilities.
 
 Adversary Actions:
-Scanning the network for open ports (e.g., 23/Telnet, 22/SSH).
+Scanning the network by service (e.g., Telnet, SSH).
 Brute-forcing credentials using a dictionary of common default usernames and passwords (e.g., admin/admin, root/12345).
 ATT&CK Techniques:
 
@@ -24,7 +24,7 @@ Phase Description: After gaining access via Telnet/SSH, the adversary downloads 
 
 Adversary Actions:
 
-Downloading the malicious script/binary via wget or tftp. (cameras operatin on light LINUX )
+Downloading the malicious script/binary via wget or tftp. (cameras operatin on light LINUX)
 Masquerading the malicious file as a legitimate system process (e.g., renaming it to httpd, sshd, or crond).
 Adding an entry to the system's initialization scripts (e.g., /etc/rc.local or /etc/init.d/) to ensure it starts automatically when the device is powered on. (it adds command that will run the script at the end of an Run-Control scripts e.g /etc/rc.local. Everything in that script system will run with root)
 ATT&CK Techniques:
@@ -50,3 +50,9 @@ T1005 (Data from Local System) — collecting data from the local system.
 T1041 (Exfiltration Over C2 Channel) — transmitting data over the C2 channel.
 
 T1573 (Encrypted Channel) — using encryption for covert data transmission (frequently seen in Mirai-like botnets).
+
+For practical realization of this plan we could emulate a IoT via dockers with containers imitating IoT.
+
+https://github.com/Its-Just-Nans/mirai-dockerized.
+
+Указать версии используемого ПО, сузить таргеты целей, какой С2 сервер
