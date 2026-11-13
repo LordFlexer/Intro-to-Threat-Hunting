@@ -1,1 +1,1 @@
-
+It is important to notice the mistake of AI model. It correctly identified concepts but got confused with classifications because of small size of the model. Thats why AI usually is used with "Human-in-the-loop" mark in cybersecurity.
