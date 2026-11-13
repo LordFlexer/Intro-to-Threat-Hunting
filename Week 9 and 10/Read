@@ -1,1 +1,6 @@
 It is important to notice the mistake of AI model. It correctly identified concepts but got confused with classifications because of small size of the model. Thats why AI usually is used with "Human-in-the-loop" mark in cybersecurity.
+Report on the APT29 (Cozy Bear) group.
+The threat actors target government institutions. Initial access is gained via spear-phishing emails containing malicious attachments.
+Following a compromise, they use PowerShell to download additional payloads (Command and Scripting Interpreter).
+To harvest credentials, they dump the memory of the LSASS process using the Mimikatz utility (OS Credential Dumping).
+To maintain persistence within the system, the attackers create tasks in the Windows Task Scheduler (Scheduled Task/Job) and utilize WMI for remote command execution.
