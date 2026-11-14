@@ -5,6 +5,7 @@ Following a compromise, they use PowerShell to download additional payloads (Com
 To harvest credentials, they dump the memory of the LSASS process using the Mimikatz utility (OS Credential Dumping).
 To maintain persistence within the system, the attackers create tasks in the Windows Task Scheduler (Scheduled Task/Job) and utilize WMI for remote command execution.
 
+Logs was collected via auditd, setted up for monitoring the execution of any commands and triggered by Atomic Red Team frame work and execution of the Invoke-AtomicTest T1082 command
 Sources: 
 https://www.huntress.com/threat-library/threat-actors/cozy-bear-apt29
 FireEye HAMMERTOSS: Stealthy Tactics Define a Russian Cyber Threat Group
